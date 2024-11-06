@@ -6,7 +6,6 @@ public abstract class MakeMove {
     TicTacToeController controller;
 
     public void makeMove(){
-        put();
         checkWin();
         changeState();
     }
@@ -19,9 +18,5 @@ public abstract class MakeMove {
         //TODO реализовать проверку победы
     }
 
-    public abstract void put();
-
-    public void changeState(){
-        controller.changePlayerState();
-    }
+    public abstract void changeState();
 }

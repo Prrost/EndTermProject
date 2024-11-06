@@ -7,7 +7,7 @@ import Controller.States.PlayerState;
 public class TicTacToeController {
     private PlayerState state;
 
-    public TicTacToeController( PlayerState state) {
+    public TicTacToeController() {
         this.state = new CrossState();
     }
 
@@ -15,15 +15,12 @@ public class TicTacToeController {
         this.state = state;
     }
 
+    public PlayerState getState() {
+        return state;
+    }
+
     public void putSign(){
         state.putSign(this);
     }
 
-    public void changePlayerState(){
-        if (this.state instanceof CrossState){
-            setState(new CircleState());
-        }else {
-            setState(new CrossState());
-        }
-    }
 }

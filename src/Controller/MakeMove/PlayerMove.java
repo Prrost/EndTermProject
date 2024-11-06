@@ -1,5 +1,6 @@
 package Controller.MakeMove;
 
+import Controller.States.CircleState;
 import Controller.TicTacToeController;
 
 public class PlayerMove extends MakeMove{
@@ -8,7 +9,8 @@ public class PlayerMove extends MakeMove{
         super(controller);
     }
 
-    public void put() {
-        //Todo реализовать установку знака для игрока
+    @Override
+    public void changeState() {
+        controller.setState(new CircleState());
     }
 }
