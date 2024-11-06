@@ -5,13 +5,14 @@
 
 package View;
 
+import Controller.ButtonClickListener;
+import Controller.TicTacToeController;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,13 +26,15 @@ public class TicTacToeView {
     JPanel textPanel = new JPanel();
     JPanel boardPanel = new JPanel();
     JButton[][] board = new JButton[3][3];
-    String playerX = "X";
-    String playerO = "O";
-    String CurrentPlayer;
+    public String playerX = "X";
+    public String playerO = "O";
+    public String CurrentPlayer;
+    private TicTacToeController controller;
 
-    public TicTacToeView() {
-        this.CurrentPlayer = this.playerX;
+    public TicTacToeView( TicTacToeController controller) {
+        this.controller = controller;
         this.frame.setVisible(true);
+        this.CurrentPlayer = playerX;
         this.frame.setSize(this.boardWight, this.BoardHeight);
         this.frame.setLocationRelativeTo((Component)null);
         this.frame.setResizable(false);
@@ -61,14 +64,10 @@ public class TicTacToeView {
                 tile.setForeground(Color.white);
                 tile.setFont(new Font("Arial", 1, 120));
                 tile.setFocusable(false);
-                tile.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        JButton tile = (JButton)e.getSource();
-                        tile.setText(TicTacToeView.this.CurrentPlayer);
-                    }
-                });
+                tile.addActionListener(new ButtonClickListener(controller, this, tile, this.board));
+                };
             }
         }
 
     }
-}
+

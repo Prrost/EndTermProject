@@ -8,7 +8,10 @@ public class AIMove extends MakeMove{
         super(controller);
     }
 
-    public void put(){
-        //Todo реализовать установку знака для ии
+    @Override
+    public void changeState() {
+        controller.setState(new CrossState());
     }
+
+
 }
