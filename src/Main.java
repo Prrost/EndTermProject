@@ -1,9 +1,26 @@
+
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+import View.TicTacToeView;
+import javax.swing.UIManager;
+import java.util.Scanner;
 import Model.Facade.TicTacToeFacade;
 
-import java.util.Scanner;
-
 public class Main {
+    public Main() {
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (Exception var2) {
+            var2.printStackTrace();
+        }
+
+        TicTacToeView ticTacToe = new TicTacToeView();
+        ticTacToe.PlayerMove();
+
         TicTacToeFacade game = new TicTacToeFacade();
         Scanner scanner = new Scanner(System.in);
 
