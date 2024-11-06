@@ -4,6 +4,7 @@
 // (powered by FernFlower decompiler)
 //
 
+import Controller.TicTacToeController;
 import View.TicTacToeView;
 import javax.swing.UIManager;
 import java.util.Scanner;
@@ -17,34 +18,11 @@ public class Main {
             var2.printStackTrace();
         }
 
-        TicTacToeView ticTacToe = new TicTacToeView();
-        ticTacToe.PlayerMove();
+        TicTacToeController controller = new TicTacToeController();
 
-        TicTacToeFacade game = new TicTacToeFacade();
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Добро пожаловать в игру Крестики-Нолики!");
-        gameLoop(game, scanner);
-    }
+        TicTacToeView view = new TicTacToeView(controller);
+        view.PlayerMove();
 
-    private static void gameLoop(TicTacToeFacade game, Scanner scanner) {
-        boolean gameEnded = false;
-
-        while (!gameEnded) {
-            game.printBoard(); // Печать состояния поля
-
-            // Ход игрока
-            System.out.println("Ваш ход (введите строку и столбец через пробел): ");
-            int playerRow = scanner.nextInt();
-            int playerCol = scanner.nextInt();
-
-            String result = game.makeMove(playerRow, playerCol);
-            if (result != null) {
-                System.out.println(result); // Результат хода
-                gameEnded = true; // Игра завершена
-            }
-        }
-
-        scanner.close();
     }
 }
