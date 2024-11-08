@@ -7,8 +7,6 @@
 import Controller.TicTacToeController;
 import View.TicTacToeView;
 import javax.swing.UIManager;
-import java.util.Scanner;
-import Model.Facade.TicTacToeFacade;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,9 +17,10 @@ public class Main {
         }
 
         TicTacToeController controller = new TicTacToeController();
-
-
         TicTacToeView view = new TicTacToeView(controller);
+
+        controller.setView(view);
+
         view.PlayerMove();
 
     }

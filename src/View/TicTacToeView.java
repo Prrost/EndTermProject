@@ -22,14 +22,16 @@ public class TicTacToeView {
     int boardWight = 600;
     int BoardHeight = 650;
     JFrame frame = new JFrame("Tic-Tac-Toe");
-    JLabel textLabel = new JLabel();
+    public JLabel textLabel = new JLabel();
     JPanel textPanel = new JPanel();
     JPanel boardPanel = new JPanel();
-    JButton[][] board = new JButton[3][3];
+    public JButton[][] board = new JButton[3][3];
     public String playerX = "X";
     public String playerO = "O";
     public String CurrentPlayer;
     private TicTacToeController controller;
+
+    public int counter = 0;
 
     public TicTacToeView( TicTacToeController controller) {
         this.controller = controller;
@@ -40,15 +42,20 @@ public class TicTacToeView {
         this.frame.setResizable(false);
         this.frame.setDefaultCloseOperation(3);
         this.frame.setLayout(new BorderLayout());
+
+
         this.textLabel.setBackground(Color.DARK_GRAY);
         this.textLabel.setForeground(Color.white);
         this.textLabel.setFont(new Font("Arial", 1, 50));
         this.textLabel.setHorizontalAlignment(0);
         this.textLabel.setText("Tic-Tac-Toe");
         this.textLabel.setOpaque(true);
+
+
         this.textPanel.setLayout(new BorderLayout());
         this.textPanel.add(this.textLabel);
         this.frame.add(this.textPanel, "North");
+
         this.boardPanel.setLayout(new GridLayout(3, 3));
         this.boardPanel.setBackground(Color.GRAY);
         this.frame.add(this.boardPanel);
