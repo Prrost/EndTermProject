@@ -3,9 +3,16 @@ package Controller;
 import Controller.States.CircleState;
 import Controller.States.CrossState;
 import Controller.States.PlayerState;
+import View.TicTacToeView;
 
 public class TicTacToeController {
     private PlayerState state;
+
+    public TicTacToeView view;
+
+    public void setView(TicTacToeView view) {
+        this.view = view;
+    }
 
     public TicTacToeController() {
         this.state = new CrossState();
@@ -20,7 +27,7 @@ public class TicTacToeController {
     }
 
     public void putSign(){
-        state.putSign(this);
+        state.putSign(this, this.view);
     }
 
 }
