@@ -1,10 +1,8 @@
 package Controller;
 
-import Controller.States.CrossState;
-import Controller.States.PlayerState;
-import Model.RandomAI;
-import View.TicTacToeView;
 
+import View.TicTacToeView;
+import Model.RandomAI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
