@@ -2,6 +2,7 @@ package Controller;
 
 import Controller.States.CrossState;
 import Controller.States.PlayerState;
+import Model.RandomAI;
 import View.TicTacToeView;
 
 import javax.swing.*;
@@ -13,6 +14,9 @@ public class ButtonClickListener implements ActionListener {
     private TicTacToeView view;
     private JButton button;
     private JButton[][] board;
+    private RandomAI ai = new RandomAI();
+
+
 
     public ButtonClickListener(TicTacToeController controller, TicTacToeView view, JButton button, JButton[][] board) {
         this.controller = controller;
@@ -22,24 +26,26 @@ public class ButtonClickListener implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-//        PlayerState state = controller.getState();
-//        if (state instanceof CrossState){
-//            view.CurrentPlayer = view.playerX;
-//        }else {
-//            view.CurrentPlayer = view.playerO;
-//        }
 
-        button.setText(view.CurrentPlayer);
-        controller.putSign();
-        randomAI();
-        controller.putSign();
+        if (button.getText().equals("X") || button.getText().equals("O") || view.textLabel.getText().equals("X is the winner!")
+                || view.textLabel.getText().equals("O is the winner!")) {
+            System.out.println("Заглушка");
+        } else {
+            button.setText(view.CurrentPlayer);
+            controller.putSign();
+            if (view.textLabel.getText().equals("X is the winner!")){
+                System.out.println("X is the winner!");
+            } else {
+                view.counter++;
+                if (view.counter != 9) {
+                    ai.randomAI(board, view);
+                    controller.putSign();
+                    view.counter++;
+                } else {
+                    view.textLabel.setText("Tie!");
+                }
+            }
+        }
     }
 
-    public void randomAI(){
-        int minValue = 0;
-        int maxValue = 2;
-        int num1 = minValue + (int) (Math.random() * (maxValue - minValue + 1));
-        int num2 = minValue + (int) (Math.random() * (maxValue - minValue + 1));
-        board[num1][num2].setText(view.playerO);
-    }
 }
