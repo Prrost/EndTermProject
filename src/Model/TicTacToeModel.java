@@ -1,12 +1,7 @@
 package Model;
 
-import Model.Flyweight.Cell;
-import Model.Flyweight.CellFactory;
-import Model.Flyweight.CellFlyweight;
 import View.TicTacToeView;
 
-import javax.swing.*;
-import java.util.Random;
 
 public class TicTacToeModel {
 
