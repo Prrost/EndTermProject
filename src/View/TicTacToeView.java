@@ -81,16 +81,22 @@ public class TicTacToeView {
     public void PlayerMove() {
         for (int r = 0; r < 3; ++r) {
             for (int c = 0; c < 3; ++c) {
-                JButton tile = new JButton();
+                // Создаем кнопку с использованием фабричного метода
+                JButton tile = createButton();
                 this.board[r][c] = tile;
                 this.boardPanel.add(tile);
-                tile.setBackground(Color.GRAY);
-                tile.setForeground(Color.white);
-                tile.setFont(new Font("Arial", 1, 120));
-                tile.setFocusable(false);
-                tile.addActionListener(new ButtonClickListener(controller, this, tile, this.board));
             }
         }
+    }
+
+    private JButton createButton() {
+        JButton button = new JButton();
+        button.setBackground(Color.GRAY);
+        button.setForeground(Color.white);
+        button.setFont(new Font("Arial", 1, 120));
+        button.setFocusable(false);
+        button.addActionListener(new ButtonClickListener(controller, this, button, this.board));
+        return button;
     }
 
     private void resetGame() {
