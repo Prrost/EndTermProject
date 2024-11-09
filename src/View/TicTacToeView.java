@@ -1,6 +1,7 @@
 package View;
 
 import Controller.ButtonClickListener;
+import Controller.States.CrossState;
 import Controller.TicTacToeController;
 
 import java.awt.BorderLayout;
@@ -20,12 +21,14 @@ public class TicTacToeView {
     public JLabel textLabel = new JLabel();
     JPanel textPanel = new JPanel();
     JPanel boardPanel = new JPanel();
+    JPanel controlPanel = new JPanel();
     public JButton[][] board = new JButton[3][3];
     public String playerX = "X";
     public String playerO = "O";
     public String CurrentPlayer;
     private TicTacToeController controller;
     public int counter = 0;
+
 
 
     private static TicTacToeView instance;
@@ -55,6 +58,17 @@ public class TicTacToeView {
         this.boardPanel.setLayout(new GridLayout(3, 3));
         this.boardPanel.setBackground(Color.GRAY);
         this.frame.add(this.boardPanel);
+
+        JButton resetButton = new JButton("Reset");
+        resetButton.setFont(new Font("Arial", 1, 30));
+        resetButton.setFocusable(false);
+        resetButton.setBackground(Color.DARK_GRAY);
+        resetButton.setForeground(Color.WHITE);
+        resetButton.addActionListener(e -> resetGame());
+
+        controlPanel.setLayout(new BorderLayout());
+        controlPanel.add(resetButton, BorderLayout.CENTER);
+        this.frame.add(controlPanel, BorderLayout.SOUTH);
     }
 
     public static TicTacToeView getInstance(TicTacToeController controller) {
@@ -77,5 +91,21 @@ public class TicTacToeView {
                 tile.addActionListener(new ButtonClickListener(controller, this, tile, this.board));
             }
         }
+    }
+
+    private void resetGame() {
+        counter = 0;
+        CurrentPlayer = playerX;
+
+        for (int r = 0; r < 3; ++r) {
+            for (int c = 0; c < 3; ++c) {
+                board[r][c].setText("");
+            }
+        }
+
+        controller.setState(new CrossState());
+
+        textLabel.setText("Tic-Tac-Toe");
+        System.out.println("Reset");
     }
 }
