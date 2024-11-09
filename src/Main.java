@@ -1,9 +1,3 @@
-
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 import Controller.TicTacToeController;
 import View.TicTacToeView;
 import javax.swing.UIManager;
@@ -17,7 +11,7 @@ public class Main {
         }
 
         TicTacToeController controller = new TicTacToeController();
-        TicTacToeView view = new TicTacToeView(controller);
+        TicTacToeView view = TicTacToeView.getInstance(controller);
 
         controller.setView(view);
 
