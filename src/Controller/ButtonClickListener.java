@@ -21,6 +21,7 @@ public class ButtonClickListener implements ActionListener {
         this.view = view;
         this.button = button;
         this.board = board;
+        this.ai = new RandomAI(view);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -36,7 +37,7 @@ public class ButtonClickListener implements ActionListener {
             } else {
                 view.counter++;
                 if (view.counter != 9) {
-                    ai.randomAI(board, view);
+                    ai.mainLoop(board);
                     controller.putSign();
                     view.counter++;
                 } else {
