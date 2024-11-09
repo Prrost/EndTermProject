@@ -1,18 +1,19 @@
 package Model.Adapter;
 
+
+import Model.Proxy.RandomAIProxy;
 import Model.RandomAI;
 import View.TicTacToeView;
+import javax.swing.*;
 
 public class RandomAIAdapter {
-    private RandomAI randomAI;
+    private RandomAIProxy aiProxy;
 
-    // Конструктор
     public RandomAIAdapter() {
-        this.randomAI = new RandomAI(); // создаем объект RandomAI
+        this.aiProxy = new RandomAIProxy(new RandomAI());  // Прокси подключен к ИИ
     }
 
-    // Метод адаптера
-    public void makeMove(TicTacToeView view) {
-        randomAI.randomAI(view.board, view); // вызываем метод randomAI из RandomAI
+    public void makeMove(JButton[][] board, TicTacToeView view) {
+        aiProxy.makeMove(board, view);  // Используем прокси для выполнения хода ИИ
     }
 }
