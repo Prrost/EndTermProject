@@ -1,10 +1,8 @@
 package Controller;
 
-import Controller.States.CrossState;
-import Controller.States.PlayerState;
-import Model.RandomAI;
-import View.TicTacToeView;
 
+import View.TicTacToeView;
+import Model.RandomAI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +12,7 @@ public class ButtonClickListener implements ActionListener {
     private TicTacToeView view;
     private JButton button;
     private JButton[][] board;
-    private RandomAI ai = new RandomAI();
+    private RandomAI ai;
 
 
 
@@ -23,6 +21,7 @@ public class ButtonClickListener implements ActionListener {
         this.view = view;
         this.button = button;
         this.board = board;
+        this.ai = new RandomAI(view);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -38,7 +37,7 @@ public class ButtonClickListener implements ActionListener {
             } else {
                 view.counter++;
                 if (view.counter != 9) {
-                    ai.randomAI(board, view);
+                    ai.mainLoop(board);
                     controller.putSign();
                     view.counter++;
                 } else {
