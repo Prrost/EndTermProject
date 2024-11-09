@@ -12,7 +12,7 @@ public class ButtonClickListener implements ActionListener {
     private TicTacToeView view;
     private JButton button;
     private JButton[][] board;
-    private RandomAI ai = new RandomAI();
+    private RandomAI ai;
 
 
 
